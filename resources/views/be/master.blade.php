@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Plus Admin</title>
+    <title>{{ $title }}</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="be/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="be/vendors/flag-icon-css/css/flag-icon.min.css">
@@ -32,9 +32,21 @@
             @yield('navbar')
             @yield('content')
             @yield('footer')
+
         </div>
+
         <!-- main-panel ends -->
     </div>
+    <footer class="footer">
+        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap dashboard templates</a> from Bootstrapdash.com</span>
+        </div>
+
+        <div>
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"> Distributed By: <a href="https://themewagon.com/" target="_blank">Themewagon</a></span>
+        </div>
+    </footer>
     <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->

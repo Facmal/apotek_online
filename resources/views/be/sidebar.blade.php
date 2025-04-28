@@ -31,7 +31,7 @@
             <span class="nav-item-head">PAGES</span>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="/admin">
                 <i class="mdi mdi-compass-outline menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
             </a>
@@ -57,15 +57,15 @@
             </div>
         </li> -->
         <li class="nav-item">
-            <a class="nav-link" href="pages/icons/mdi.html">
-                <i class="mdi mdi-contacts menu-icon"></i>
-                <span class="menu-title">Icons</span>
+            <a class="nav-link" href="/jenis">
+                <i class="mdi mdi-pharmacy menu-icon"></i>
+                <span class="menu-title">Jenis Obat</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="pages/forms/basic_elements.html">
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-                <span class="menu-title">Forms</span>
+                <span class="menu-title">Obat</span>
             </a>
         </li>
         <li class="nav-item">

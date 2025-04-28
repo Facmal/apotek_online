@@ -7,7 +7,7 @@
 @endsection
 @section('content')
 
-<div class="col-xl-12 stretch-card grid-margin">
+<div class="col-xl-9 stretch-card grid-margin">
     <div class="card">
         <div class="card-body">
             <div class="d-flex justify-content-between flex-wrap">
@@ -49,7 +49,4 @@
     </div>
 </div>
 
-@endsection
-@section('footer')
-@include('be.footer')
 @endsection

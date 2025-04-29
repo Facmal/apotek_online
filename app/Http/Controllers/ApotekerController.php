@@ -4,15 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class ApotekerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('be.admin.index', [
-            'title' => 'Admin']);
+        return view('be.apoteker.index', [
+            'title' => 'Apoteker',
+            'menu' => 'Apoteker'
+        ]);
     }
 
     /**

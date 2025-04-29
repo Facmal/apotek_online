@@ -3,19 +3,23 @@
         <li class="nav-item nav-profile border-bottom">
             <a href="#" class="nav-link flex-column">
                 <div class="nav-profile-image">
-                    <img src="be/images/faces/face1.jpg" alt="profile" />
+                    <img src="{{ asset('be/images/faces/face1.jpg') }}" alt="profile" />
                     <!--change to offline or busy as needed-->
                 </div>
                 <div class="nav-profile-text d-flex ml-0 mb-3 flex-column">
-                    <span class="font-weight-semibold mb-1 mt-2 text-center">Antonio Olson</span>
-                    <span class="text-secondary icon-sm text-center">$3499.00</span>
+                    <span class="font-weight-semibold mb-1 mt-2 text-center">
+                        {{ Auth::user()->name ?? 'Guest' }}
+                    </span>
+                    <span class="text-secondary icon-sm text-center">
+                        {{ ucfirst(Auth::user()->jabatan ?? 'User') }}
+                    </span>
                 </div>
             </a>
         </li>
         <li class="nav-item pt-3">
             <a class="nav-link d-block" href="index.html">
-                <img class="sidebar-brand-logo" src="be/images/logo.svg" alt="" />
-                <img class="sidebar-brand-logomini" src="be/images/logo-mini.svg" alt="" />
+                <img class="sidebar-brand-logo" src="{{ asset('be/images/logo.svg') }}" alt="" />
+                <img class="sidebar-brand-logomini" src="{{ asset('be/images/logo-mini.svg') }}" alt="" />
                 <div class="small font-weight-light pt-1">Responsive Dashboard</div>
             </a>
             <form class="d-flex align-items-center" action="#">
@@ -63,7 +67,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="pages/forms/basic_elements.html">
+            <a class="nav-link" href="/obat">
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
                 <span class="menu-title">Obat</span>
             </a>
@@ -78,6 +82,12 @@
             <a class="nav-link" href="pages/tables/basic-table.html">
                 <i class="mdi mdi-table-large menu-icon"></i>
                 <span class="menu-title">Tables</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('auth.logout') }}">
+                <i class="mdi mdi-table-large menu-icon"></i>
+                <span class="menu-title">Logout</span>
             </a>
         </li>
         <li class="nav-item pt-3">

@@ -4,7 +4,7 @@
             <span class="mdi mdi-chevron-double-left"></span>
         </button>
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="be/images/logo-mini.svg" alt="logo" /></a>
+            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{asset('be/images/logo-mini.svg')}}" alt="logo" /></a>
         </div>
         <ul class="navbar-nav">
             <li class="nav-item dropdown">
@@ -16,7 +16,7 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item preview-item">
                         <div class="preview-thumbnail">
-                            <img src="be/images/faces/face1.jpg" alt="image" class="profile-pic">
+                            <img src="{{asset('be/images/faces/face1.jpg')}}" alt="image" class="profile-pic">
                         </div>
                         <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                             <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Mark send you a message</h6>
@@ -26,7 +26,7 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item preview-item">
                         <div class="preview-thumbnail">
-                            <img src="be/images/faces/face6.jpg" alt="image" class="profile-pic">
+                            <img src="{{asset('be/images/faces/face6.jpg')}}" alt="image" class="profile-pic">
                         </div>
                         <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                             <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Cregh send you a message</h6>
@@ -36,7 +36,7 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item preview-item">
                         <div class="preview-thumbnail">
-                            <img src="be/images/faces/face7.jpg" alt="image" class="profile-pic">
+                            <img src="{{asset('be/images/faces/face7.jpg')}}" alt="image" class="profile-pic">
                         </div>
                         <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                             <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Profile picture updated</h6>
@@ -103,20 +103,14 @@
             </li>
             <li class="nav-item nav-profile dropdown d-none d-md-block">
                 <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                    <div class="nav-profile-text">English </div>
+                    <div class="nav-profile-text">{{ Auth::user()->name ?? 'Guest' }} </div>
                 </a>
                 <div class="dropdown-menu center navbar-dropdown" aria-labelledby="profileDropdown">
                     <a class="dropdown-item" href="#">
-                        <i class="flag-icon flag-icon-bl mr-3"></i> French </a>
+                        <i class="mdi mdi-account mr-3"></i> Profile </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                        <i class="flag-icon flag-icon-cn mr-3"></i> Chinese </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                        <i class="flag-icon flag-icon-de mr-3"></i> German </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                        <i class="flag-icon flag-icon-ru mr-3"></i>Russian </a>
+                    <a class="dropdown-item" href="{{ route('auth.logout') }}">
+                        <i class="mdi mdi-logout mr-3"></i> Logout </a>
                 </div>
             </li>
             <li class="nav-item nav-logout d-none d-lg-block">

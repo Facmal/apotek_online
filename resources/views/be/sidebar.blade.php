@@ -2,64 +2,55 @@
     <ul class="nav">
         <li class="nav-item nav-profile border-bottom">
             <a href="#" class="nav-link flex-column">
-                <div class="nav-profile-image">
-                    <img src="{{ asset('be/images/faces/face1.jpg') }}" alt="profile" />
-                    <!--change to offline or busy as needed-->
+                <div class="nav-profile-image" style="display: flex; align-items: center; justify-content: center; width: 70px; height: 70px; background-color: #f0f0f0; border-radius: 50%; overflow: hidden;">
+                    @if(Auth::user()->img_profile)
+                    <img src="{{ asset('storage/' . Auth::user()->img_profile) }}" alt="profile" style="width: 100%; height: 100%; object-fit: cover;" />
+                    @else
+                    <span style="text-align: center; font-size: 0.550rem; color: #888;">No Image Profile</span>
+                    @endif
                 </div>
                 <div class="nav-profile-text d-flex ml-0 mb-3 flex-column">
-                    <span class="font-weight-semibold mb-1 mt-2 text-center">
+                    <span class="font-weight-semibold mb-1 mt-2 text-center" style="font-size: 1.25rem;">
                         {{ Auth::user()->name ?? 'Guest' }}
                     </span>
-                    <span class="text-secondary icon-sm text-center">
+                    <span class="text-secondary icon-sm text-center" style="font-size: 0.875rem;">
                         {{ ucfirst(Auth::user()->jabatan ?? 'User') }}
                     </span>
                 </div>
             </a>
         </li>
-        <li class="nav-item pt-3">
-            <a class="nav-link d-block" href="index.html">
-                <img class="sidebar-brand-logo" src="{{ asset('be/images/logo.svg') }}" alt="" />
-                <img class="sidebar-brand-logomini" src="{{ asset('be/images/logo-mini.svg') }}" alt="" />
-                <div class="small font-weight-light pt-1">Responsive Dashboard</div>
-            </a>
-            <form class="d-flex align-items-center" action="#">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <i class="input-group-text border-0 mdi mdi-magnify"></i>
-                    </div>
-                    <input type="text" class="form-control border-0" placeholder="Search" />
-                </div>
-            </form>
-        </li>
         <li class="pt-2 pb-1">
             <span class="nav-item-head">PAGES</span>
         </li>
+
+        @if(Auth::user()->jabatan === 'admin')
+        <!-- Admin Dashboard with Dropdown -->
         <li class="nav-item">
-            <a class="nav-link" href="/admin">
+            <a class="nav-link" data-toggle="collapse" href="#admin-dashboard" aria-expanded="false" aria-controls="admin-dashboard">
                 <i class="mdi mdi-compass-outline menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
-            </a>
-        </li>
-        <!-- <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-                <span class="menu-title">UI Elements</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="ui-basic">
+            <div class="collapse" id="admin-dashboard">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a>
+                        <a class="nav-link" href="/admin">Admin Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a>
+                        <a class="nav-link" href="/karyawan">Karyawan Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/ui-features/typography.html">Typography</a>
+                        <a class="nav-link" href="/pemilik">Pemilik Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/apoteker">Apoteker Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/kasir">Kasir Dashboard</a>
                     </li>
                 </ul>
             </div>
-        </li> -->
+        </li>
         <li class="nav-item">
             <a class="nav-link" href="/jenis">
                 <i class="mdi mdi-pharmacy menu-icon"></i>
@@ -73,28 +64,64 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="pages/charts/chartjs.html">
+            <a class="nav-link" href="/usermanage">
                 <i class="mdi mdi-chart-bar menu-icon"></i>
-                <span class="menu-title">Charts</span>
+                <span class="menu-title">Users</span>
+            </a>
+        </li>
+        @else
+        <!-- Non-admin users -->
+        @if(Auth::user()->jabatan === 'pemilik')
+        <li class="nav-item">
+            <a class="nav-link" href="/pemilik">
+                <i class="mdi mdi-account-tie menu-icon"></i>
+                <span class="menu-title">Dashboard Pemilik</span>
+            </a>
+        </li>
+        @endif
+
+        @if(Auth::user()->jabatan === 'apoteker')
+        <li class="nav-item">
+            <a class="nav-link" href="/apoteker">
+                <i class="mdi mdi-flask menu-icon"></i>
+                <span class="menu-title">Dashboard Apoteker</span>
+            </a>
+        </li>
+        @endif
+
+        @if(Auth::user()->jabatan === 'kasir')
+        <li class="nav-item">
+            <a class="nav-link" href="/kasir">
+                <i class="mdi mdi-cash-register menu-icon"></i>
+                <span class="menu-title">Dashboard Kasir</span>
+            </a>
+        </li>
+        @endif
+
+        @if(Auth::user()->jabatan === 'karyawan')
+        <li class="nav-item">
+            <a class="nav-link" href="/karyawan">
+                <i class="mdi mdi-account menu-icon"></i>
+                <span class="menu-title">Dashboard Karyawan</span>
+            </a>
+        </li>
+        @endif
+
+        @if(in_array(Auth::user()->jabatan, ['kasir', 'karyawan']))
+        <li class="nav-item">
+            <a class="nav-link" href="/jenis">
+                <i class="mdi mdi-pharmacy menu-icon"></i>
+                <span class="menu-title">Jenis Obat</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="pages/tables/basic-table.html">
-                <i class="mdi mdi-table-large menu-icon"></i>
-                <span class="menu-title">Tables</span>
+            <a class="nav-link" href="/obat">
+                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                <span class="menu-title">Obat</span>
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('auth.logout') }}">
-                <i class="mdi mdi-table-large menu-icon"></i>
-                <span class="menu-title">Logout</span>
-            </a>
-        </li>
-        <li class="nav-item pt-3">
-            <a class="nav-link" href="http://bootstrapdash.com/demo/plus-free/documentation/documentation.html" target="_blank">
-                <i class="mdi mdi-file-document-box menu-icon"></i>
-                <span class="menu-title">Documentation</span>
-            </a>
-        </li>
+        @endif
+
+        @endif
     </ul>
 </nav>

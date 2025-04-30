@@ -11,13 +11,21 @@ class ObatController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request->input('search'); // Ambil input pencarian
+        $query = Obat::with('jenisObat');
+
+        if ($search) {
+            $query->where('nama_obat', 'like', '%' . $search . '%'); // Filter berdasarkan nama obat
+        }
+
         return view('be.obat.index', [
             'title' => 'Obat',
             'menu' => 'Obat',
-            'datas' => Obat::with('jenisObat')->get(),
-            'jenis_obat' => JenisObat::all()
+            'datas' => $query->paginate(5), // Pagination dengan 5 item per halaman
+            'jenis_obat' => JenisObat::all(),
+            'search' => $search // Kirim kembali input pencarian ke view
         ]);
     }
 

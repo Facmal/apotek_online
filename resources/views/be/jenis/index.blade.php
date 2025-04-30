@@ -15,7 +15,7 @@
             </div>
             <div class="table-responsive">
                 <table class="table table-bordered">
-                    <thead>
+                    <thead class="thead-light">
                         <tr>
                             <th>#</th>
                             <th>Jenis</th>
@@ -102,5 +102,23 @@
         width: 100%;
         margin-top: 20px;
         /* Adjust the value to push the card downward */
+    }
+
+    .table td {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .btn-group .btn {
+        margin-right: 5px;
+    }
+
+    .btn-group .btn:last-child {
+        margin-right: 0;
+    }
+
+    .card-container {
+        width: 100%;
+        margin-top: 20px;
     }
 </style>

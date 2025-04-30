@@ -20,22 +20,25 @@ Route::get('/', function () {
 
 Route::middleware(['userAkses:admin'])->group(function () {
     Route::resource('/admin', App\Http\Controllers\AdminController::class);
+    Route::resource('/usermanage', App\Http\Controllers\UserManageController::class);
 });
 
-Route::middleware(['userAkses:admin,karyawan'])->group(function () {
+Route::middleware(['userAkses:kasir,karyawan'])->group(function () {
     Route::resource('/jenis', App\Http\Controllers\JenisController::class);
     Route::resource('/obat', App\Http\Controllers\ObatController::class);
-    Route::resource('/karyawan', App\Http\Controllers\KaryawanController::class);
 });
 
-Route::middleware(['userAkses:admin,pemilik'])->group(function () {
+Route::middleware(['userAkses:pemilik'])->group(function () {
     Route::resource('/pemilik', App\Http\Controllers\PemilikController::class);
 });
-Route::middleware(['userAkses:admin,apoteker'])->group(function () {
+Route::middleware(['userAkses:apoteker'])->group(function () {
     Route::resource('/apoteker', App\Http\Controllers\ApotekerController::class);
 });
-Route::middleware(['userAkses:admin,kasir'])->group(function () {
+Route::middleware(['userAkses:kasir'])->group(function () {
     Route::resource('/kasir', App\Http\Controllers\KasirController::class);
+});
+Route::middleware(['userAkses:karyawan'])->group(function () {
+    Route::resource('/karyawan', App\Http\Controllers\KaryawanController::class);
 });
 Route::get('/login', [SesiController::class, 'index'])->name('auth.login')->middleware('guest');
 Route::get('/logout', [SesiController::class, 'logout'])->name('auth.logout');

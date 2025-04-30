@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id(); // id: bigint(20) unsigned
+            $table->string('img_profile', 255)->nullable();
             $table->string('name', 255);
             $table->string('email', 255)->unique();
             $table->timestamp('email_verified_at')->nullable();

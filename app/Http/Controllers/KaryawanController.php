@@ -11,7 +11,7 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        return view('be.karyawan.index', [
+        return view('be.dashboard.karyawan', [
             'title' => 'Karyawan',
             'menu' => 'Karyawan'
         ]);

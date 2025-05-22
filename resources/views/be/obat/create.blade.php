@@ -39,10 +39,30 @@
                     <textarea name="deskripsi_obat" id="deskripsi_obat" class="form-control" placeholder="Deskripsi Obat" rows="4">{{ old('deskripsi_obat') }}</textarea>
                 </div>
                 <div class="form-group">
-                    <label>Foto Obat</label>
+                    <label>Foto Obat 1</label>
                     <input type="file" name="foto1" id="foto1" class="file-upload-default" />
                     <div class="input-group col-xs-12">
-                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Foto" />
+                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Foto 1" />
+                        <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary" type="button"> Upload </button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Foto Obat 2</label>
+                    <input type="file" name="foto2" id="foto2" class="file-upload-default" />
+                    <div class="input-group col-xs-12">
+                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Foto 2" />
+                        <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary" type="button"> Upload </button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Foto Obat 3</label>
+                    <input type="file" name="foto3" id="foto3" class="file-upload-default" />
+                    <div class="input-group col-xs-12">
+                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Foto 3" />
                         <span class="input-group-append">
                             <button class="file-upload-browse btn btn-primary" type="button"> Upload </button>
                         </span>

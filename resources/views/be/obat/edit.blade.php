@@ -40,21 +40,61 @@
                     <textarea name="deskripsi_obat" id="deskripsi_obat" class="form-control" placeholder="Deskripsi Obat" rows="4">{{ old('deskripsi_obat', $obat->deskripsi_obat) }}</textarea>
                 </div>
                 <div class="form-group">
-                    <label>Foto Obat</label>
-                    <input type="file" name="foto1" id="foto1" class="file-upload-default" onchange="previewImage(event)" />
+                    <label>Foto Obat 1</label>
+                    <input type="file" name="foto1" id="foto1" class="file-upload-default" onchange="previewImage(event, 'preview1')" />
                     <div class="input-group col-xs-12">
-                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Foto" />
+                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Foto 1" />
                         <span class="input-group-append">
                             <button class="file-upload-browse btn btn-primary" type="button"> Upload </button>
                         </span>
                     </div>
                     @if ($obat->foto1)
                     <div class="mt-3">
-                        <img id="preview" src="{{ asset('storage/' . $obat->foto1) }}" alt="Foto Obat" style="width: 100px; height: 100px;" />
+                        <img id="preview1" src="{{ asset('storage/' . $obat->foto1) }}" alt="Foto Obat 1" style="width: 100px; height: 100px;" />
                     </div>
                     @else
                     <div class="mt-3">
-                        <img id="preview" src="#" alt="Preview Foto" style="width: 100px; height: 100px; display: none;" />
+                        <img id="preview1" src="#" alt="Preview Foto 1" style="width: 100px; height: 100px; display: none;" />
+                    </div>
+                    @endif
+                </div>
+
+                <div class="form-group">
+                    <label>Foto Obat 2</label>
+                    <input type="file" name="foto2" id="foto2" class="file-upload-default" onchange="previewImage(event, 'preview2')" />
+                    <div class="input-group col-xs-12">
+                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Foto 2" />
+                        <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary" type="button"> Upload </button>
+                        </span>
+                    </div>
+                    @if ($obat->foto2)
+                    <div class="mt-3">
+                        <img id="preview2" src="{{ asset('storage/' . $obat->foto2) }}" alt="Foto Obat 2" style="width: 100px; height: 100px;" />
+                    </div>
+                    @else
+                    <div class="mt-3">
+                        <img id="preview2" src="#" alt="Preview Foto 2" style="width: 100px; height: 100px; display: none;" />
+                    </div>
+                    @endif
+                </div>
+
+                <div class="form-group">
+                    <label>Foto Obat 3</label>
+                    <input type="file" name="foto3" id="foto3" class="file-upload-default" onchange="previewImage(event, 'preview3')" />
+                    <div class="input-group col-xs-12">
+                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Foto 3" />
+                        <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary" type="button"> Upload </button>
+                        </span>
+                    </div>
+                    @if ($obat->foto3)
+                    <div class="mt-3">
+                        <img id="preview3" src="{{ asset('storage/' . $obat->foto3) }}" alt="Foto Obat 3" style="width: 100px; height: 100px;" />
+                    </div>
+                    @else
+                    <div class="mt-3">
+                        <img id="preview3" src="#" alt="Preview Foto 3" style="width: 100px; height: 100px; display: none;" />
                     </div>
                     @endif
                 </div>
@@ -98,8 +138,8 @@
         }
     };
 
-    function previewImage(event) {
-        const preview = document.getElementById('preview');
+    function previewImage(event, previewId) {
+        const preview = document.getElementById(previewId);
         preview.src = URL.createObjectURL(event.target.files[0]);
         preview.style.display = 'block';
     }

@@ -53,6 +53,8 @@ class ObatController extends Controller
             'stok' => 'required|integer',
             'deskripsi_obat' => 'nullable|string',
             'foto1' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'foto2' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'foto3' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         // Check for duplicate nama_obat
@@ -71,6 +73,14 @@ class ObatController extends Controller
 
         if ($request->file('foto1')) {
             $data['foto1'] = $request->file('foto1')->store('Foto_Obat');
+        }
+
+        if ($request->file('foto2')) {
+            $data['foto2'] = $request->file('foto2')->store('Foto_Obat');
+        }
+
+        if ($request->file('foto3')) {
+            $data['foto3'] = $request->file('foto3')->store('Foto_Obat');
         }
 
         Obat::create($data);
@@ -114,6 +124,8 @@ class ObatController extends Controller
             'stok' => 'required|integer',
             'deskripsi_obat' => 'nullable|string',
             'foto1' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'foto2' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'foto3' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         $data = $request->only([
@@ -130,6 +142,18 @@ class ObatController extends Controller
             }
             $data['foto1'] = $request->file('foto1')->store('Foto_Obat');
         }
+        if ($request->file('foto2')) {
+            if ($obat->foto2) {
+                unlink(storage_path('app/public/' . $obat->foto2));
+            }
+            $data['foto2'] = $request->file('foto2')->store('Foto_Obat');
+        }
+        if ($request->file('foto3')) {
+            if ($obat->foto3) {
+                unlink(storage_path('app/public/' . $obat->foto3));
+            }
+            $data['foto3'] = $request->file('foto3')->store('Foto_Obat');
+        }
 
         $obat->update($data);
 
@@ -145,6 +169,12 @@ class ObatController extends Controller
 
         if ($obat->foto1) {
             unlink(storage_path('app/public/' . $obat->foto1));
+        }
+        if ($obat->foto2) {
+            unlink(storage_path('app/public/' . $obat->foto2));
+        }
+        if ($obat->foto3) {
+            unlink(storage_path('app/public/' . $obat->foto3));
         }
 
         $namaObat = $obat->nama_obat;

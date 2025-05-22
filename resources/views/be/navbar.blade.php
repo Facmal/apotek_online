@@ -6,7 +6,7 @@
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
             <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{asset('be/images/logo-mini.svg')}}" alt="logo" /></a>
         </div>
-        <ul class="navbar-nav">
+        {{-- <ul class="navbar-nav">
             <li class="nav-item dropdown">
                 <a class="nav-link" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                     <i class="mdi mdi-email-outline"></i>
@@ -93,28 +93,19 @@
                     <h6 class="p-3 font-13 mb-0 text-primary text-center">View all notifications</h6>
                 </div>
             </li>
-        </ul>
+        </ul> --}}
         <ul class="navbar-nav navbar-nav-right">
-            <li class="nav-item nav-logout d-none d-md-block mr-3">
-                <a class="nav-link" href="#">Status</a>
-            </li>
-            <li class="nav-item nav-logout d-none d-md-block">
-                <button class="btn btn-sm btn-danger">Trailing</button>
-            </li>
             <li class="nav-item nav-profile dropdown d-none d-md-block">
                 <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                     <div class="nav-profile-text">{{ Auth::user()->name ?? 'Guest' }} </div>
                 </a>
                 <div class="dropdown-menu center navbar-dropdown" aria-labelledby="profileDropdown">
-                    <a class="dropdown-item" href="#">
-                        <i class="mdi mdi-account mr-3"></i> Profile </a>
-                    <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{ route('auth.logout') }}">
                         <i class="mdi mdi-logout mr-3"></i> Logout </a>
                 </div>
             </li>
             <li class="nav-item nav-logout d-none d-lg-block">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="/">
                     <i class="mdi mdi-home-circle"></i>
                 </a>
             </li>

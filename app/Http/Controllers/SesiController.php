@@ -43,6 +43,8 @@ class SesiController extends Controller
                 return redirect('/pemilik');
             } elseif (Auth::user()->jabatan == 'kasir') {
                 return redirect('/kasir');
+            } elseif (Auth::user()->jabatan == 'kurir') {
+                return redirect('/kurir');
             }
         } else {
             return redirect('/login')->with('error', 'Email atau Password salah!');
@@ -52,6 +54,6 @@ class SesiController extends Controller
     function logout()
     {
         Auth::logout();
-        return redirect('/login');
+        return redirect('/')->with('pesan', 'Anda telah logout!');
     }
 }

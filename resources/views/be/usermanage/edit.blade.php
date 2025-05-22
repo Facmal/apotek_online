@@ -27,6 +27,7 @@
                         <option value="karyawan" {{ $user->jabatan == 'karyawan' ? 'selected' : '' }}>Karyawan</option>
                         <option value="kasir" {{ $user->jabatan == 'kasir' ? 'selected' : '' }}>Kasir</option>
                         <option value="pemilik" {{ $user->jabatan == 'pemilik' ? 'selected' : '' }}>Pemilik</option>
+                        <option value="kurir" {{ old('jabatan') == 'kurir' ? 'selected' : '' }}>Kurir</option>
                     </select>
                 </div>
                 <div class="form-group">

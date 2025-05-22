@@ -24,104 +24,139 @@
         </li>
 
         @if(Auth::user()->jabatan === 'admin')
-        <!-- Admin Dashboard with Dropdown -->
+        <!-- Admin Access -->
         <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#admin-dashboard" aria-expanded="false" aria-controls="admin-dashboard">
-                <i class="mdi mdi-compass-outline menu-icon"></i>
-                <span class="menu-title">Dashboard</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="admin-dashboard">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin">Admin Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/karyawan">Karyawan Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/pemilik">Pemilik Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/apoteker">Apoteker Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/kasir">Kasir Dashboard</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/jenis">
-                <i class="mdi mdi-pharmacy menu-icon"></i>
-                <span class="menu-title">Jenis Obat</span>
+            <a class="nav-link" href="{{ route('admin.index') }}">
+                <i class="mdi mdi-view-dashboard menu-icon"></i>
+                <span class="menu-title">Dashboard Admin</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/obat">
-                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-                <span class="menu-title">Obat</span>
+            <a class="nav-link" href="{{ route('usermanage.index') }}">
+                <i class="mdi mdi-account-multiple menu-icon"></i>
+                <span class="menu-title">User Management</span>
+            </a>
+        </li>
+        @endif
+        @if(Auth::user()->jabatan === 'karyawan')
+        <!-- Karyawan Access -->
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('karyawan.index') }}">
+                <i class="mdi mdi-account menu-icon"></i>
+                <span class="menu-title">Dashboard Karyawan</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/usermanage">
-                <i class="mdi mdi-chart-bar menu-icon"></i>
-                <span class="menu-title">Users</span>
+            <a class="nav-link" href="{{ route('jenispengiriman.index') }}">
+                <i class="mdi mdi-truck-delivery menu-icon"></i>
+                <span class="menu-title">Delivery Types</span>
             </a>
         </li>
-        @else
-        <!-- Non-admin users -->
+        @endif
+        @if(in_array(Auth::user()->jabatan, ['kasir', 'karyawan']))
+        <!-- Kasir & Karyawan Access -->
+        
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('metodebayar.index') }}">
+                <i class="mdi mdi-credit-card menu-icon"></i>
+                <span class="menu-title">Payment Methods</span>
+            </a>
+        </li>
+        
+        @endif
+        @if(Auth::user()->jabatan === 'kurir')
+        <!-- Kurir Access -->
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('kurir.index') }}">
+                <i class="mdi mdi-bike menu-icon"></i>
+                <span class="menu-title">Dashboard Kurir</span>
+            </a>
+        </li>
+        @endif
+        
+        @if(in_array(Auth::user()->jabatan, ['kasir', 'karyawan', 'kurir', 'pemilik']))
+        <!-- Kasir, Karyawan & Kurir Access -->
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('penjualan.index') }}">
+                <i class="mdi mdi-cart-outline menu-icon"></i>
+                <span class="menu-title">Orders</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('pengiriman.index') }}">
+                <i class="mdi mdi-truck-fast menu-icon"></i>
+                <span class="menu-title">Shipping</span>
+            </a>
+        </li>
+        @endif
+
+        
+
         @if(Auth::user()->jabatan === 'pemilik')
+        <!-- Pemilik Access -->
         <li class="nav-item">
-            <a class="nav-link" href="/pemilik">
-                <i class="mdi mdi-account-tie menu-icon"></i>
+            <a class="nav-link" href="{{ route('pemilik.index') }}">
+                <i class="mdi mdi-chart-bar menu-icon"></i>
                 <span class="menu-title">Dashboard Pemilik</span>
             </a>
         </li>
         @endif
 
         @if(Auth::user()->jabatan === 'apoteker')
+        <!-- Apoteker Access -->
         <li class="nav-item">
-            <a class="nav-link" href="/apoteker">
-                <i class="mdi mdi-flask menu-icon"></i>
+            <a class="nav-link" href="{{ route('apoteker.index') }}">
+                <i class="mdi mdi-pill menu-icon"></i>
                 <span class="menu-title">Dashboard Apoteker</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#product-menu">
+                <i class="mdi mdi-medical-bag menu-icon"></i>
+                <span class="menu-title">Products</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="product-menu">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('jenis.index') }}">
+                            <i class="mdi mdi-pill menu-icon"></i>
+                            Jenis Obat
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('obat.index') }}">
+                            <i class="mdi mdi-medical-bag menu-icon"></i>
+                            Obat
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('distributor.index') }}">
+                <i class="mdi mdi-truck menu-icon"></i>
+                <span class="menu-title">Distributor</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('pembelian.index') }}">
+                <i class="mdi mdi-cart menu-icon"></i>
+                <span class="menu-title">Purchase</span>
             </a>
         </li>
         @endif
 
         @if(Auth::user()->jabatan === 'kasir')
+        <!-- Kasir Access -->
         <li class="nav-item">
-            <a class="nav-link" href="/kasir">
+            <a class="nav-link" href="{{ route('kasir.index') }}">
                 <i class="mdi mdi-cash-register menu-icon"></i>
                 <span class="menu-title">Dashboard Kasir</span>
             </a>
         </li>
         @endif
 
-        @if(Auth::user()->jabatan === 'karyawan')
-        <li class="nav-item">
-            <a class="nav-link" href="/karyawan">
-                <i class="mdi mdi-account menu-icon"></i>
-                <span class="menu-title">Dashboard Karyawan</span>
-            </a>
-        </li>
-        @endif
-
-        @if(in_array(Auth::user()->jabatan, ['kasir', 'karyawan']))
-        <li class="nav-item">
-            <a class="nav-link" href="/jenis">
-                <i class="mdi mdi-pharmacy menu-icon"></i>
-                <span class="menu-title">Jenis Obat</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/obat">
-                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-                <span class="menu-title">Obat</span>
-            </a>
-        </li>
-        @endif
-
-        @endif
+        
     </ul>
 </nav>

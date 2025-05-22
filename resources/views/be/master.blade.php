@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="{{asset('be/css/demo_1/style.css')}}" />
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{asset('be/images/favicon.png')}}" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body id="body">
@@ -77,9 +79,17 @@
     <script src="{{asset('be/js/file-upload.js')}}"></script>
     <script src="{{asset('be/js/typeahead.js')}}"></script>
     <script src="{{asset('be/js/select2.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="https://lipis.github.io/bootstrap-sweetalert/dist/sweetalert.js"></script>
     <link rel="stylesheet" href="https://lipis.github.io/bootstrap-sweetalert/dist/sweetalert.css">
+
+    <!-- Tooltip -->
+    <script>
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    </script>
+    @stack('scripts')
 </body>
 
 </html>

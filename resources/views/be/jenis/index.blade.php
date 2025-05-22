@@ -34,7 +34,11 @@
                         <tr>
                             <td>{{$nmr + 1}}</td>
                             <td>{{$data['jenis']}}</td>
+                            @if (strlen($data['deskripsi_jenis']) > 15)
+                            <td data-bs-toggle="tooltip" data-bs-placement="right" title="{{$data['deskripsi_jenis']}}">{{ substr($data['deskripsi_jenis'], 0, 50) . '...' }}</td>
+                            @else
                             <td>{{$data['deskripsi_jenis']}}</td>
+                            @endif
                             <td><img src="{{asset('storage/'.$data['image_url'])}}" alt="Image" /></td>
                             <td>
                                 <div class="btn-group" role="group">

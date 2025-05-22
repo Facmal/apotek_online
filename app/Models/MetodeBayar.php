@@ -10,7 +10,6 @@ class MetodeBayar extends Model
     use HasFactory;
 
     protected $table = 'metode_bayar';
-
     protected $fillable = [
         'metode_pembayaran',
         'tempat_bayar',

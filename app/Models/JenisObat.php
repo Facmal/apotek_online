@@ -10,12 +10,7 @@ class JenisObat extends Model
     use HasFactory;
 
     protected $table = 'jenis_obat';
-
-    protected $fillable = [
-        'jenis',
-        'deskripsi_jenis',
-        'image_url',
-    ];
+    protected $fillable = ['jenis', 'deskripsi_jenis', 'image_url'];
 
     public function obats()
     {

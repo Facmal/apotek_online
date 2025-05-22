@@ -3,36 +3,32 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Pelanggan extends Model
+class Pelanggan extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
     protected $table = 'pelanggan';
-
     protected $fillable = [
         'nama_pelanggan',
         'email',
-        'katakunci',
+        'password',
         'no_telp',
-        'alamat1',
-        'kota1',
-        'propinsi1',
-        'kodepos1',
-        'alamat2',
-        'kota2',
-        'propinsi2',
-        'kodepos2',
-        'alamat3',
-        'kota3',
-        'propinsi3',
-        'kodepos3',
-        'foto',
-        'url_ktp',
+        'alamat1','kota1','propinsi1','kodepos1',
+        'alamat2','kota2','propinsi2','kodepos2',
+        'alamat3','kota3','propinsi3','kodepos3',
+        'foto','url_ktp',
     ];
+    protected $hidden = ['password'];
 
-    public function penjualans()
+    public function keranjang()
+    {
+        return $this->hasMany(Keranjang::class, 'id_pelanggan');
+    }
+
+    public function penjualan()
     {
         return $this->hasMany(Penjualan::class, 'id_pelanggan');
     }

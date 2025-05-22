@@ -10,22 +10,15 @@ class DetailPenjualan extends Model
     use HasFactory;
 
     protected $table = 'detail_penjualan';
-
-    protected $fillable = [
-        'id_penjualan',
-        'id_obat',
-        'jumlah_beli',
-        'harga_beli',
-        'subtotal',
-    ];
-
-    public function obat()
-    {
-        return $this->belongsTo(Obat::class, 'id_obat');
-    }
+    protected $fillable = ['id_penjualan', 'id_obat', 'jumlah_beli', 'harga_beli', 'subtotal'];
 
     public function penjualan()
     {
         return $this->belongsTo(Penjualan::class, 'id_penjualan');
+    }
+
+    public function obat()
+    {
+        return $this->belongsTo(Obat::class, 'id_obat');
     }
 }

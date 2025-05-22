@@ -10,9 +10,9 @@ class UserAkses
     public function handle($request, Closure $next, ...$jabatans)
     {
         // Jika user adalah admin, izinkan akses ke semua halaman
-        if (Auth::check() && Auth::user()->jabatan == 'admin') {
-            return $next($request);
-        }
+        // if (Auth::check() && Auth::user()->jabatan == 'admin') {
+        //     return $next($request);
+        // }
 
         // Cek apakah jabatan user ada dalam daftar $jabatans
         if (Auth::check() && in_array(Auth::user()->jabatan, $jabatans)) {

@@ -10,12 +10,7 @@ class Distributor extends Model
     use HasFactory;
 
     protected $table = 'distributor';
-
-    protected $fillable = [
-        'nama_distributor',
-        'telepon',
-        'alamat',
-    ];
+    protected $fillable = ['nama_distributor', 'telepon', 'alamat'];
 
     public function pembelians()
     {

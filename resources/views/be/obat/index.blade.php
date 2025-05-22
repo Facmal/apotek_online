@@ -45,26 +45,58 @@
                             <th>Harga Jual</th>
                             <th>Stok</th>
                             <th>Deskripsi</th>
-                            <th>Foto</th>
+                            <th>Foto1</th>
+                            <th>foto2</th>
+                            <th>foto3</th>
                             <th>Options</th>
                         </tr>
                     </thead>
                     <tbody>
                         @if ($datas->isEmpty())
                         <tr>
-                            <td colspan="8" class="text-center">Belum ada produk</td>
+                            <td colspan="10" class="text-center">Belum ada produk</td> <!-- Sesuaikan jumlah kolom -->
                         </tr>
                         @else
                         @foreach ($datas as $nmr => $data)
                         <tr>
                             <td>{{ $datas->firstItem() + $nmr }}</td> <!-- Menyesuaikan nomor urut dengan pagination -->
+                            @if (strlen($data['nama_obat']) > 10)
+                            <td data-bs-toggle="tooltip" data-bs-placement="right" title="{{ $data['nama_obat'] }}">{{ substr($data['nama_obat'], 0, 8) . '...' }}</td>
+                            @else
                             <td>{{ $data['nama_obat'] }}</td>
+                            @endif
+                            @if (strlen($data->jenisObat->jenis) > 10)
+                            <td data-bs-toggle="tooltip" data-bs-placement="right" title="{{ $data->jenisObat->jenis }}">{{ substr($data->jenisObat->jenis, 0, 8) . '...' }}</td>
+                            @else
                             <td>{{ $data->jenisObat->jenis }}</td>
+                            @endif
                             <td>Rp {{ number_format($data['harga_jual'], 0, ',', '.') }}</td>
                             <td>{{ $data['stok'] }}</td>
+                            @if (strlen($data['deskripsi_obat']) > 15)
+                            <td data-bs-toggle="tooltip" data-bs-placement="right" title="{{ $data['deskripsi_obat'] }}">{{ substr($data['deskripsi_obat'], 0, 10) . '...' }}</td>
+                            @else
                             <td>{{ $data['deskripsi_obat'] }}</td>
+                            @endif
                             <td>
+                                @if ($data['foto1'])
                                 <img src="{{ asset('storage/' . $data['foto1']) }}" alt="Image" style="width: 50px; height: 50px;" />
+                                @else
+                                <span>-</span>
+                                @endif
+                            </td>
+                            <td>
+                                @if ($data['foto2'])
+                                <img src="{{ asset('storage/' . $data['foto2']) }}" alt="Image" style="width: 50px; height: 50px;" />
+                                @else
+                                <span>-</span>
+                                @endif
+                            </td>
+                            <td>
+                                @if ($data['foto3'])
+                                <img src="{{ asset('storage/' . $data['foto3']) }}" alt="Image" style="width: 50px; height: 50px;" />
+                                @else
+                                <span>-</span>
+                                @endif
                             </td>
                             <td>
                                 <div class="btn-group" role="group">

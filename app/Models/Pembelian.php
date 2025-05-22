@@ -10,13 +10,7 @@ class Pembelian extends Model
     use HasFactory;
 
     protected $table = 'pembelian';
-
-    protected $fillable = [
-        'nonota',
-        'tgl_pembelian',
-        'total_bayar',
-        'id_distributor',
-    ];
+    protected $fillable = ['nonota', 'tgl_pembelian', 'total_bayar', 'id_distributor'];
 
     public function distributor()
     {

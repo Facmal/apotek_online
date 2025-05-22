@@ -11,7 +11,7 @@ class ApotekerController extends Controller
      */
     public function index()
     {
-        return view('be.apoteker.index', [
+        return view('be.dashboard.apoteker', [
             'title' => 'Apoteker',
             'menu' => 'Apoteker'
         ]);

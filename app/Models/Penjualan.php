@@ -10,7 +10,6 @@ class Penjualan extends Model
     use HasFactory;
 
     protected $table = 'penjualan';
-
     protected $fillable = [
         'id_metode_bayar',
         'tgl_penjualan',
@@ -20,8 +19,9 @@ class Penjualan extends Model
         'total_bayar',
         'status_order',
         'keterangan_status',
+        'snap_token',
         'id_jenis_kirim',
-        'id_pelanggan',
+        'id_pelanggan'
     ];
 
     public function metodeBayar()
@@ -37,6 +37,11 @@ class Penjualan extends Model
     public function pelanggan()
     {
         return $this->belongsTo(Pelanggan::class, 'id_pelanggan');
+    }
+
+    public function detailPenjualan()
+    {
+        return $this->hasMany(DetailPenjualan::class, 'id_penjualan');
     }
 
     public function pengiriman()

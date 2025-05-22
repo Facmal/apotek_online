@@ -11,7 +11,7 @@ class PemilikController extends Controller
      */
     public function index()
     {
-        return view('be.pemilik.index', [
+        return view('be.dashboard.pemilik', [
             'title' => 'Pemilik'
         ]);
     }

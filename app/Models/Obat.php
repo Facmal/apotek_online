@@ -10,7 +10,6 @@ class Obat extends Model
     use HasFactory;
 
     protected $table = 'obat';
-
     protected $fillable = [
         'nama_obat',
         'id_jenis_obat',
@@ -19,7 +18,7 @@ class Obat extends Model
         'foto1',
         'foto2',
         'foto3',
-        'stok',
+        'stok'
     ];
 
     public function jenisObat()
@@ -27,13 +26,18 @@ class Obat extends Model
         return $this->belongsTo(JenisObat::class, 'id_jenis_obat');
     }
 
+    public function detailPembelians()
+    {
+        return $this->hasMany(DetailPembelian::class, 'id_obat');
+    }
+
     public function detailPenjualans()
     {
         return $this->hasMany(DetailPenjualan::class, 'id_obat');
     }
 
-    public function detailPembelians()
+    public function keranjangs()
     {
-        return $this->hasMany(DetailPembelian::class, 'id_obat');
+        return $this->hasMany(Keranjang::class, 'id_obat');
     }
 }

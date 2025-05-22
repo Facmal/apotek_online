@@ -11,7 +11,7 @@ class KasirController extends Controller
      */
     public function index()
     {
-        return view('be.kasir.index', [
+        return view('be.dashboard.kasir', [
             'title' => 'Kasir',
             'menu' => 'Kasir'
         ]);
